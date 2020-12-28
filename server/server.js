@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 //CORS
 // Headers and CORS connfigurations
+app.options('*', cors());
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
